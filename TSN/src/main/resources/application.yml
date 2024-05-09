@@ -1,4 +1,9 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
+  datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+  datasource.url=jdbc:mysql://localhost:3306/loginindemo?serverTimezone=UTC
+  datasource.username=root
+  datasource.password=Zhou123-zz
+  jpa.database-platform = org.hibernate.dialect.MySQLDialect
