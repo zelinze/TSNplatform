@@ -3,8 +3,8 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/loginindemo?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/tsn?serverTimezone=UTC
     username: root
-    password: Zhou123-zz
+    password: 123456
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
