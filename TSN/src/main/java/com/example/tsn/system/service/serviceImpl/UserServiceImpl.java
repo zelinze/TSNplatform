@@ -1,4 +1,4 @@
-package com.example.tsn.system.service;
+package com.example.tsn.system.service.serviceImpl;
 
 import com.example.tsn.system.entity.UserEntity;
 import com.example.tsn.system.DAO.UserDAO;
