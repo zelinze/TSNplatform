@@ -1,43 +1,45 @@
 package com.example.tsn.system.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.*;
 
-@Table(name = "user")
+import java.io.Serial;
+import java.io.Serializable;
+
 @Entity
-public class UserEntity {
-    // 注意属性名要与数据表中的字段名一致
-    // 主键自增int(10)对应long
+@Table(name = "user", schema = "public") // Use 'users' as table name, within 'public' schema
+@Data
+@NoArgsConstructor
+public class UserEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long uid;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
-    // 用户名属性varchar对应String
-    private String uname;
+    @Column(nullable = false, unique = true)
+    private String username; // 'account' renamed to 'username' for clarity
 
-    // 密码属性varchar对应String
+    @Column(nullable = false)
     private String password;
 
-    public long getUid() {
-        return uid;
-    }
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    public void setUid(long uid) {
-        this.uid = uid;
-    }
+    @Column(nullable = true)
+    private String name;
 
-    public String getUname() {
-        return uname;
-    }
+    @Column(nullable = true)
+    private String inviteUserId; // To track who invited this user, if applicable
 
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
+    @Column
+    private Boolean isAdmin = false; // Default to false, renamed to 'isAdmin' for clarity
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    // Lombok will generate getters, setters, and a no-args constructor
 }
